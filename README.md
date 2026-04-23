@@ -7,6 +7,7 @@ It reads order data from a CSV file and replaces placeholders in a Word template
 The result is a professional order report generated for each entry in the CSV file.
 
 ✨ Features
+
 📊 CSV Integration: Reads order data from a structured CSV file.
 
 📝 Word Document Automation: Uses a .docx template with placeholders (e.g., AAAA, BBBB, PPPP) and replaces them with actual values.
@@ -20,6 +21,7 @@ The result is a professional order report generated for each entry in the CSV fi
 📂 File Management: Saves each generated document with a unique name based on order number and status.
 
 🐍 Python Concepts and Libraries Used
+
 📄 python-docx: Opens and edits Word documents, replaces placeholders with actual values.
 
 📑 csv: Reads structured data from CSV files using DictReader.
