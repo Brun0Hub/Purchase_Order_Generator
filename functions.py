@@ -4,6 +4,8 @@ import csv                 # To read CSV files
 import os                  # To check if files exist
 from datetime import datetime  # To capture the current date
 import locale              # To configure language/locale
+import win32com.client as win32
+
 
 # Set locale to Brazilian Portuguese so month names appear in Portuguese
 locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
@@ -95,3 +97,25 @@ def generate_orders_batch(csv_path: str) -> None:
                 payment_terms=row["Condição de Pagamento"],
                 order_status=row["Status do Pedido"]
             )
+
+
+def send_email(to, cc, bcc, subject, html_body,
+                 pasta_anexos=r"C:\Users\bruno\Documentos\PROJETOS\PYTHON\AUTOMAÇÃO\Automatic Term Filling"):
+    
+    outlook = win32.Dispatch("outlook.application")
+    email = outlook.CreateItem(0)
+
+    email.To = to
+    email.Cc = cc
+    email.Bcc = bcc
+    email.Subject = subject
+    email.HTMLBody = html_body
+
+    # Adiciona anexos
+    lista_arquivos = os.listdir(pasta_anexos)
+    for nome_arquivo in lista_arquivos:
+        if nome_arquivo.lower().endswith("aprovado.docx"):
+            caminho_anexo = os.path.join(pasta_anexos, nome_arquivo)
+            email.Attachments.Add(caminho_anexo)
+
+    email.Send()
