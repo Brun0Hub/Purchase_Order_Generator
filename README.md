@@ -29,11 +29,15 @@ The result is a professional order report generated for each entry in the CSV fi
 
 📁 os: Checks if a file already exists before saving, prevents overwriting.
 
+📂 File Management: Saves each generated document with a unique name based on order number and status.
+
 ⏰ datetime: Captures the current system date and extracts day, month, and year.
 
 🌐 locale: Ensures month names are displayed in Portuguese (e.g., "abril").
 
 🔤 String Formatting: Formats numeric values into currency strings with proper separators (R$ 1.234,56).
+
+📧 Email Sending: Automatically sends the generated documents via Outlook, with configurable recipients, subject, and body, and attaches approved files.
 
 ⚙️ How It Works
 Prepare a Word template (Order.docx) with placeholders like AAAA, BBBB, PPPP, QQQQ, RRRR.
@@ -44,7 +48,9 @@ Run the script:
 
 bash
 python main.py
+
 The script generates one Word document per order, replacing placeholders with actual values and saving them in the project folder.
+It then automatically sends an email via Outlook with the approved generated files attached.
 
 🖼️ Example
 Template Placeholder:
@@ -64,6 +70,7 @@ Unit Price: R$ 102,34
 Total Price: R$ 2.456,16
 Date: 23 / abril / 2026
 🎯 Benefits
+
 ⏱️ Saves time by automating repetitive document creation.
 
 ✅ Ensures consistency across all order reports.
